@@ -10,6 +10,7 @@ import Typography from '@material-ui/core/Typography';
 import OrderIcon from '@material-ui/icons/AddShoppingCart';
 import ReferIcon from '@material-ui/icons/SupervisorAccount';
 import InventoryCard from './Components/InventoryCard';
+import ListingCard from './Components/ListingCard';
 
 import './App.css';
 
@@ -133,7 +134,7 @@ class App extends Component {
             <InventoryCard />
             <InventoryCard />
             <InventoryCard />
-            <InventoryCard />
+            <ListingCard />
           </div>
         </div>
       </MuiThemeProvider>
