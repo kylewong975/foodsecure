@@ -1,33 +1,50 @@
-.App {
+.bottom-nav{
+  width: 100%;
+  position: fixed;
+  bottom: 0;
+}
+.center-fab{
+  height: 100px;
+  width: 100px;
+  box-sizing: border-box;
+  padding-top: 17px;
+  margin-top: -32px;
   text-align: center;
+  border: 5px solid #FFAFA4;
+  border-radius: 50%;
+  color: #FFAFA4;
+  background-color: white;
+  z-index: 1000;
+}
+.page{
+  height: calc(100vh - 56px);
+  box-sizing: border-box;
+  width: 100vw;
+  overflow-y: scroll;
+  overflow-x: hidden;
 }
 
-.App-logo {
-  animation: App-logo-spin infinite 20s linear;
-  height: 40vmin;
-  pointer-events: none;
+.header {
+  background-color: #00ff7f;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.headerIcons {
+  position: absolute;
+  right: 0;
+  margin-right: 20px;
+}
+
+.nextDeliveryBanner {
+  background-color: #fff68e;
+  text-align: center;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  margin-top: -5px;
+}
+
+.Inventory {
   display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
-}
-
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+  flex-direction: row;
+  white-space: nowrap;
+  overflow-x: auto;
 }

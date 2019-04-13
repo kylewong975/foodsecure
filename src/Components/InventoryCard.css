@@ -1,0 +1,12 @@
+.cardImg {
+    display: block;
+    align-items: center;
+    margin-left: auto;
+    margin-right: auto;
+    width: 50%;
+    height: 140px;
+}
+
+.cardDesc {
+    text-align: center;
+}
