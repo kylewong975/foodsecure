@@ -48,9 +48,11 @@ export default class UpcomingDelivery extends React.Component {
                     </Grid>
                     <Grid item xs={6} className="FoodItemList">
                         {Object.keys(this.props.items).map((val, i) => {
+                            console.log("xxxxxxxxxxxxxxxxxxxxxxxxx")
+                            console.log(val);
                             if(i >= 3)
                                 return null;
-                            return <FoodItem itemName={val} quantity={this.props.items[val]} />;
+                            return <FoodItem itemName={this.props.items[val]["food_name"]} quantity={this.props.items[val]["qty"]} />;
                         })}
                     </Grid>
                 </Grid>

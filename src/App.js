@@ -209,8 +209,10 @@ class App extends Component {
       searchResults: [],
       selectedFood: "",
       food_bank_id: "CC7NFrAnTwr7yCDkOzHZ",
+      user_id: "VcLrNxRJ0XQuEujzVycs",
       farmFoodList: [],
       isSidebarOpen: false,
+      orderList: [],
     }
   }
 
@@ -233,7 +235,21 @@ class App extends Component {
     })
     .then(response => {
       this.setState({ farmFoodList: response.data })
-      console.log(API_ROOT_ADDRESS + 'get_bank_food/' + this.state.food_bank_id + '/' + food_id)
+      // console.log(API_ROOT_ADDRESS + 'get_bank_food/' + this.state.food_bank_id + '/' + food_id)
+      // console.log(response.data)
+    })
+    .catch(message => console.warn(message))
+  }
+
+  getOrders = () => {
+    axios({
+      method: 'get',
+      url: API_ROOT_ADDRESS + 'get_orders/' + this.state.user_id + '/',
+    })
+    .then(response => {
+      this.setState({ orderList: response.data })
+      console.log(API_ROOT_ADDRESS + 'get_orders/' + this.state.user_id + '/')
+      console.log("-------------------------")
       console.log(response.data)
     })
     .catch(message => console.warn(message))
@@ -249,6 +265,7 @@ class App extends Component {
 
   componentDidMount() {
     this.getBankFood('')
+    this.getOrders()
   }
 
   onSetSidebarOpen = (open) => {
@@ -401,7 +418,17 @@ class App extends Component {
                   Upcoming Deliveries
                 </Typography>
                 <Grid container>
-                  {deliveries.map((val) => {
+                  {this.state.orderList.map((val) => {
+                    return (<UpcomingDelivery 
+                      bankName={val['bank_name']}
+                      deliveryDate={val['drop_date']} 
+                      farmName={val['farm_name']}
+                      items={val['foods']} 
+                      percentAdditional={70}
+                      percentComplete={30}
+                    />);
+                  })}
+{/*                  {deliveries.map((val) => {
                     return (<UpcomingDelivery 
                       bankName={val['bankName']}
                       deliveryDate={val['deliveryDate']} 
@@ -411,6 +438,7 @@ class App extends Component {
                       percentComplete={val['percentComplete']}
                     />);
                   })}
+*/}                  
                 </Grid>
               </div>
             </Grid>

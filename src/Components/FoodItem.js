@@ -23,6 +23,7 @@ export default class FoodItem extends React.Component {
             <div className="FoodItem">
                 <img src={`/img/${this.props.itemName.toLowerCase()}.png`} className="FoodItemImg" />
                 <span className="FoodItemName">{this.pluralizeWord(this.props.itemName)}</span>
+                <span className="FoodItemName">{this.props.itemName}</span>
                 <span className="FoodItemDesc">x{this.props.quantity}</span>
             </div>
         );

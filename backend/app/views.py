@@ -1,8 +1,9 @@
 from django.shortcuts import render, HttpResponse
-from django.http import JsonResponse, HttpResponseNotFound
+from django.http import JsonResponse, HttpResponseNotFound, HttpResponseBadRequest
 from google.cloud import firestore
 from geopy.distance import distance
 from django.core import exceptions
+import json
 import datetime
 
 from . import utils
@@ -33,10 +34,13 @@ def create_order(request):
     raise exceptions.ViewDoesNotExist
   for a in request.POST.lists():
     print(a)
-  farm_food_id = request.POST["farm_food_id"]
-  food_bank_id = request.POST["food_bank_id"]
-  user_id = request.POST["user_id"]
-  qty = request.POST["qty"]
+  req = json.loads(request.body)
+  farm_food_id = req["farm_food_id"]
+  food_bank_id = req["food_bank_id"]
+  user_id = req["user_id"]
+  qty = req["qty"]
+  if qty == None:
+    return HttpResponseBadRequest("qty cannot be empty.")
 
   # get documents
   farm_food = db.collection("farm_foods").document(farm_food_id).get()
@@ -150,7 +154,29 @@ def get_bank_food(request, food_bank_id, food_id=None):
       item["drop_deadline"] = None
 
     item["drop_price"] = doc.get("price") + (50 / item["drop_quota"]) # simulate $50 truck delivery spread across truck capacity
-
     items += [item]
-
   return JsonResponse(items, safe=False)
+
+def get_orders(request, user_id):
+  if request.method != "GET":
+    raise exceptions.ViewDoesNotExist
+
+  user = db.collection("users").document(user_id).get()
+  query = db.collection("orders").where("user", "==", user.reference)
+
+  items = {}
+  for doc in query.stream(): # each doc is a farm_food
+    foods = {}
+    drop_id = doc.get("drop").get().id
+    drop_date = doc.get("drop").get().get("deadline")
+    farm_name = doc.get("drop").get().get("farm").get().get("name")
+    bank_name = doc.get("drop").get().get("food_bank").get().get("name")
+    foods["food_name"] = doc.get("farm_food").get().get("food").get().get("name")
+    foods["qty"] = doc.get("qty")
+
+    if drop_id not in items.keys():
+      items[drop_id] = {"drop_date": drop_date, "farm_name": farm_name, "bank_name": bank_name, "foods": []}
+
+    items[drop_id]["foods"] += [foods]
+
+  return JsonResponse(list(items.values()), safe=False)
