@@ -33,6 +33,7 @@ class ListingCard extends React.Component {
 
     state = {
         qty: null,
+        dlvDate: null  // Delivery Date
     };
 
     handleChange = name => event => {
@@ -86,6 +87,14 @@ class ListingCard extends React.Component {
                             value={this.state.qty}
                             onChange={this.handleChange('qty')}
                             type="number"
+                            className={classes.textField}
+                            margin="normal"
+                        />
+                        <TextField
+                            id="standard-number"
+                            value={this.state.dlvDate}
+                            onChange={this.handleChange('dlvDate')}
+                            type="date"
                             className={classes.textField}
                             margin="normal"
                         />

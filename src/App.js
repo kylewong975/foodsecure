@@ -196,6 +196,14 @@ class App extends Component {
     })
   }
 
+  getSearchFoodResult = (item) => {
+    axios.get(SEARCH_FOOD_API + "?search=" + item)
+    .then(response => {
+      this.setState({ searchResults: response.data })
+    })
+    .catch(message => console.warn(message))
+  }
+
   render() {
     const { classes } = this.props;
     return (
@@ -220,14 +228,17 @@ class App extends Component {
               <Downshift
                 onInputValueChange={item => {
                   this.setState({ searchBarText: item })
-                  axios.get(SEARCH_FOOD_API + "?search=" + item)
-                  .then(response => {
-                    this.setState({ searchResults: response.data })
-                  })
-                  .catch(message => console.warn(message))
+                  this.getSearchFoodResult(item);
                 }}
                 onChange={selectedItem => {
                   this.setState({ selectedFood: selectedItem.name })
+                  const image = document.createElement("img");
+                  image.src = "/img/" + selectedItem.name.toLowerCase() + ".png";
+                  swal({
+                    title: selectedItem.name,
+                    content: image,
+                    buttons: ["Purchase", "Close"]
+                  })
                 }}
                 itemToString={item => item ? item.name : ""}
               >
@@ -242,7 +253,12 @@ class App extends Component {
                   getLabelProps
                 }) => (
                     <div className="searchBar">
-                      <input {...getInputProps({ placeholder: "Search Foods" })} id="searchBarInput" />
+                      <input {...getInputProps({ placeholder: "Search Foods", 
+                        onFocus: () =>  {
+                          this.state.searchResults.length === 0 && this.getSearchFoodResult("") 
+                        }})} 
+                        id="searchBarInput"
+                        />
                       {isOpen ? (
                         <div className="downshift-dropdown">
                           {this.state.searchResults ? this.state.searchResults.map((item, index) => (
