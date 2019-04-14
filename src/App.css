@@ -95,6 +95,17 @@
   padding-bottom: 10px;
 }
 
+.friendsHeader {
+  margin-top: 100px;
+  padding: 20px;
+}
+
+#userImage {
+  left: 25%;
+  right: 20%;
+  position: relative;
+}
+
 .swal-modal {
   margin-left: auto;
   margin-right: auto;

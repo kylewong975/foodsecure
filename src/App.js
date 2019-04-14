@@ -16,6 +16,7 @@ import NotificationsIcon from '@material-ui/icons/Notifications';
 import ProfileIcon from '@material-ui/icons/AccountCircle';
 import SearchBar from 'material-ui-search-bar';
 import Downshift from 'downshift';
+import Sidebar from 'react-sidebar';
 import axios from 'axios';
 import ListingCard from './Components/ListingCard';
 import UpcomingDelivery from './Components/UpcomingDelivery';
@@ -34,7 +35,7 @@ const styles = theme => ({
   },
 });
 
-const SEARCH_FOOD_API = "http://localhost:8080/search_foods"
+const SEARCH_FOOD_API = "https://0b6281fd.ngrok.io/search_foods"
 
 /*
 const SEARCH_RESULTS = [
@@ -178,10 +179,12 @@ const listings = [
 class App extends Component {
   constructor(props) {
     super(props);
+    this.FB = window.FB;
     this.state = {
       searchBarText: "",
       searchResults: [],
-      selectedFood: ""
+      selectedFood: "",
+      isSidebarOpen: false
     }
   }
 
@@ -202,6 +205,10 @@ class App extends Component {
       this.setState({ searchResults: response.data })
     })
     .catch(message => console.warn(message))
+  }
+
+  onSetSidebarOpen = (open) => {
+    this.setState({ isSidebarOpen: open });
   }
 
   render() {
@@ -298,7 +305,14 @@ class App extends Component {
                   </IconButton>
                 </Tooltip>
                 <Tooltip title="Profile">
-                  <IconButton color="default">
+                  <IconButton color="default" onClick={() => {
+                    this.FB && this.FB.login(response => {
+                      console.log(response)
+                      if (response.status === 'connected') {
+                        this.setState({ isSidebarOpen: true })
+                      }
+                    });
+                  }}>
                     <ProfileIcon />
                   </IconButton>
                 </Tooltip>
@@ -344,6 +358,35 @@ class App extends Component {
                 </Grid>
               </div>
             </Grid>
+            <Sidebar
+              sidebar={   
+                <div>
+                  <Typography style={{ marginTop: '100px', padding: '20px', fontSize: '18px', lineHeight: '2' }} variant="p" color="default" noWrap className="friendsHeader">
+                    Welcome to FoodSecure, Max! <br></br> 
+                  </Typography>
+                  <img src="img/user_selfie.png" id="userImage" alt="User" height="156" width="156"></img>
+                  <Typography style={{ 
+                      marginTop: '50px', 
+                      padding: '20px', 
+                      fontSize: '18px', 
+                      lineHeight: '2',
+                      fontFamily: "Helvetica"
+                    }} variant="p" color="default" noWrap className="friendsHeader">
+                    Your friends are also on FoodSecure: <br></br>
+                  </Typography>
+                  <p style={{ margin: '20px', marginLeft: '40px', fontFamily: 'Moronco' }} className="friendsBody">Kyle</p>
+                  <p style={{ margin: '20px', marginLeft: '40px', fontFamily: 'Moronco' }} className="friendsBody">Michael</p>
+                  <p style={{ margin: '20px', marginLeft: '40px', fontFamily: 'Moronco' }} className="friendsBody">Jacobzen</p>
+                  {/* <button onClick={() => this.onSetSidebarOpen(false)}>
+                      Close
+                  </button> */}
+                </div>           
+              }
+              open={this.state.isSidebarOpen}
+              onSetOpen={this.onSetSidebarOpen}
+              styles={{ sidebar: { background: "white" } }}
+            >
+            </Sidebar>
           </Grid>
         </div>
       </MuiThemeProvider>

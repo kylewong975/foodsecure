@@ -10,6 +10,11 @@ import FoodItem from './FoodItem';
 import './UpcomingDelivery.css';
 
 export default class UpcomingDelivery extends React.Component {
+    constructor(props) {
+        super(props);
+        this.FB = window.FB;
+    }
+
     render() {
         return (
             <Card className="deliveryCard">
@@ -42,7 +47,22 @@ export default class UpcomingDelivery extends React.Component {
                         </Typography>
                         <div className="referRightIcon">
                             <IconButton color="default">
-                                <AddIcon />
+                                <AddIcon onClick={() => {
+                                    /*
+                                    this.FB.api("/me", (response) => {
+                                        console.log("Facebook data on myself:")
+                                        console.log(response)
+                                        if (response && !response.error) {
+                                            this.fbId = response.id
+                                        }
+                                    })
+                                    this.FB.api("/me/friends", { fields: 'id, name' }, (response) => {
+                                        console.log("Facebook /me/friends:")
+                                        console.log(response)
+                                    })
+                                    */
+                                }}
+                                />
                             </IconButton>
                         </div> 
                     </div>
