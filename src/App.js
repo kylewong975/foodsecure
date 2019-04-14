@@ -35,7 +35,6 @@ const styles = theme => ({
 });
 
 const SEARCH_FOOD_API = "http://localhost:8080/search_foods"
-const API_ROOT_ADDRESS = "http://c09d378a.ngrok.io/"
 
 /*
 const SEARCH_RESULTS = [
@@ -189,9 +188,7 @@ class App extends Component {
     this.state = {
       searchBarText: "",
       searchResults: [],
-      selectedFood: "",
-      food_bank_id: "DUWQDj2QbRVMbggCWvQp",
-      farmFoodList: [],
+      selectedFood: ""
     }
   }
 
@@ -207,29 +204,12 @@ class App extends Component {
     })
   }
 
-  getBankFood = (food_id) => {
-    axios({
-      method: 'get',
-      url: API_ROOT_ADDRESS + 'get_bank_food/' + this.state.food_bank_id + '/' + food_id,
-    })
-    .then(response => {
-      this.setState({ farmFoodList: response.data })
-      console.log(API_ROOT_ADDRESS + 'get_bank_food/' + this.state.food_bank_id + '/' + food_id)
-      console.log(response.data)
-    })
-    .catch(message => console.warn(message))
-  }
-
   getSearchFoodResult = (item) => {
     axios.get(SEARCH_FOOD_API + "?search=" + item)
     .then(response => {
       this.setState({ searchResults: response.data })
     })
     .catch(message => console.warn(message))
-  }
-
-  componentDidMount() {
-    this.getBankFood('')
   }
 
   render() {
@@ -338,25 +318,14 @@ class App extends Component {
               <div className="scroll-container">
                 <br/><br/>
                 <Grid container>
-                  {this.farmFoodList.map((val) => {
+                  {listings.map((val) => {
                     return (<Grid item xs={12} md={6} lg={4}>
                       <ListingCard 
-                        farmFoodId={val['farm_food_id']}
-                        farmName={val['farm_name']}
-                        foodName={val['food_name']}
-                        price={val['drop_price']}
-                        // dropQty={val['drop_qty']}
-                        // dropQuota={val['drop_quota']}
-                        percentComplete={val['drop_qty'] / val['drop_quota']}
-                        percentAdditional={100 - (val['drop_qty'] / val['drop_quota'])}
-                        dropDeadline={val['drop_deadline']}
-                        // timeLeft={val['drop_deadline']}
-                        distanceKm={val['distance_km']}
-                        // itemName={val['itemName']}
-                        // percentAdditional={val['percentAdditional']}
-                        // percentComplete={val['percentComplete']}
-                        // price={val['price']}
-                        // timeLeft={val['timeLeft']}
+                        itemName={val['itemName']}
+                        percentAdditional={val['percentAdditional']}
+                        percentComplete={val['percentComplete']}
+                        price={val['price']}
+                        timeLeft={val['timeLeft']}
                       />
                     </Grid>);
                   })}

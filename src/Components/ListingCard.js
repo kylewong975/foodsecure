@@ -50,7 +50,6 @@ const styles = theme => ({
 class ListingCard extends React.Component {
 
     state = {
-        farm_food_id:
         qty: null,
         dlvDate: null,  // Delivery Date
         frequency: '',
