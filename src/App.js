@@ -115,7 +115,7 @@ const styles = theme => ({
   },
 });
 
-const SEARCH_FOOD_API = "localhost:8080/search_foods"
+const SEARCH_FOOD_API = "http://localhost:8080/search_foods"
 
 const SEARCH_RESULTS = [
   { name: "Harry Potter" },
@@ -131,7 +131,8 @@ class App extends Component {
     super(props);
     this.state = {
       searchBarText: "",
-      searchResults: []
+      searchResults: [],
+      selectedFood: ""
     }
   }
 
@@ -168,8 +169,22 @@ class App extends Component {
                 onRequestSearch={() => { return }}
               /> */}
               <Downshift
-                onChange={selectedItem => alert(`You have selected ${selectedItem.name}`)}
-                itemToString={item => (SEARCH_RESULTS ? SEARCH_RESULTS.name : "")}
+                onInputValueChange={item => {
+                  this.setState({ searchBarText: item })
+                  console.log("Downshift onInputValueChange: ", item, SEARCH_FOOD_API + "?search=" + this.state.searchBarText)
+                  axios.get(SEARCH_FOOD_API + "?search=" + item)
+                  .then(response => {
+                    console.log(`Server result retrieved: `)
+                    console.log(response.data)
+                    this.setState({ searchResults: response.data })
+                  })
+                  .catch(message => console.warn(message))
+                }}
+                onChange={selectedItem => {
+                  console.log("Downshift onChange: ", selectedItem)
+                  this.setState({ selectedFood: selectedItem.name })
+                }}
+                itemToString={item => item ? item.name : ""}
               >
                 {({
                   getInputProps,
@@ -185,29 +200,24 @@ class App extends Component {
                       <input {...getInputProps({ placeholder: "Search Foods" })} id="searchBarInput" />
                       {isOpen ? (
                         <div className="downshift-dropdown">
-                          {SEARCH_RESULTS
-                            .filter(
-                              item =>
-                                !inputValue ||
-                                item.name.toLowerCase().includes(inputValue.toLowerCase())
-                            )
-                            .map((item, index) => (
-                              <div
-                                className="dropdown-item"
-                                {...getItemProps({ key: item.name, index, item })}
-                                style={{
-                                  backgroundColor:
-                                    highlightedIndex === index ? "lightgray" : "white",
-                                  color: 'black',
-                                  fontWeight: selectedItem === item ? "bold" : "normal",
-                                  fontSize: "20px",
-                                  height: "30px",
-                                  padding: "7.5px"
-                                }}
-                              >
-                                {item.name}
-                              </div>
-                            ))}
+                          {this.state.searchResults ? this.state.searchResults.map((item, index) => (
+                                <div
+                                  className="dropdown-item"
+                                  {...getItemProps({ key: item.name, index, item })}
+                                  style={{
+                                    backgroundColor:
+                                      highlightedIndex === index ? "lightgray" : "white",
+                                    color: 'black',
+                                    fontWeight: selectedItem === item ? "bold" : "normal",
+                                    fontSize: "20px",
+                                    height: "30px",
+                                    padding: "7.5px"
+                                  }}
+                                >
+                                  {item.name}
+                                </div>
+                              )) : null
+                            })
                         </div>
                       ) : null}
                     </div>
