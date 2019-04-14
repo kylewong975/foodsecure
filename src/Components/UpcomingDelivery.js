@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import swal from 'sweetalert';
 import Card from '@material-ui/core/Card';
 import CardContent from '@material-ui/core/CardContent';
 import Grid from '@material-ui/core/Grid';
@@ -10,6 +11,24 @@ import FoodItem from './FoodItem';
 import './UpcomingDelivery.css';
 
 export default class UpcomingDelivery extends React.Component {
+    friends = () => {
+        let image = document.createElement("img");
+        image.src = "/img/friends.png";
+        image.classList.add("friendImg");
+        swal({
+        content: image,
+        button: {
+            text: "Close",
+        },
+        })
+    }
+
+    constructor(props) {
+        super(props);
+        this.FB = window.FB;
+
+    }
+
     render() {
         return (
             <Card className="deliveryCard">
@@ -41,7 +60,7 @@ export default class UpcomingDelivery extends React.Component {
                             Invite your friends to order this food item for faster and cheaper delivery!
                         </Typography>
                         <div className="referRightIcon">
-                            <IconButton color="default">
+                            <IconButton color="default" onClick={this.friends}>
                                 <AddIcon />
                             </IconButton>
                         </div> 
