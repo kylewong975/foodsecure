@@ -20,89 +20,8 @@ import UpcomingDelivery from './Components/UpcomingDelivery';
 import './App.css';
 
 const theme = createMuiTheme({
-  // overrides: {
-  //     MuiButton: {
-  //       text: {
-  //         backgroundColor: '#F68080',
-  //         borderRadius: 3,
-  //         border: 0,
-  //         color: 'white',
-  //         height: 30,
-  //         padding: '0 30px',
-  //         margin: '20px',
-  //         boxShadow: '0 3px 5px 2px rgba(255, 105, 135, .3)',
-  //         fontFamily: 'Poppins',
-  //         fontWeight: 700,
-  //         fontSize: 14
-  //       },
-  //     },
-  //     MuiBottomNavigation: {
-  //       root: {
-  //         backgroundColor: '#FFAFA4',
-  //       }
-  //     },
-  //     MuiBottomNavigationAction: {
-  //       root: {
-  //         color: '#000000',
-  //       },
-  //       iconOnly: {
-  //         color: '#FF0000'
-  //       },
-  //       wrapper: {
-  //         color: '#FFFFFF ',
-  //       }
-  //     }
-  //   },
-  //   MuiPickers: {
-  //     root: {
-  //       backgroundColor: '#FFAFA4'
-  //     },
-  //   },
-  //   MuiCard: {
-  //     root: {
-  //       backgroundColor: '#FFAFA4'
-  //     }
-  //   },
   typography: {
     useNextVariants: true,
-    //     h1: {
-    //       fontFamily: 'Poppins',
-    //       fontWeight: 700,
-    //       color: '#FFFFFF',
-    //       fontSize: 44,
-    //       marginBottom: 20
-    //     },
-    //     h2: {
-    //       fontFamily: 'Poppins',
-    //       fontWeight: 700,
-    //       color: '#FFFFFF',
-    //       fontSize: 48,
-    //       margin: 0
-    //     },
-    //     h3: {
-    //       fontFamily: 'Poppins',
-    //       fontWeight: 700,
-    //       color: '#F68080',
-    //       fontSize: 24,
-    //       marginBottom: '16px'
-    //     },
-    //     h4: {
-    //       fontFamily: 'Poppins',
-    //       fontWeight: 700,
-    //       color: 'white',
-    //       fontSize: 24,
-    //     },
-    //     h5: {
-    //       fontFamily: 'Poppins',
-    //       fontWeight: 700,
-    //       color: 'black',
-    //       fontSize: 18,
-    //     },
-    //     h6: {
-    //       fontFamily: 'Poppins',
-    //       color: '#F68080',
-    //       fontSize: 12,
-    //     }
   },
 });
 
@@ -111,6 +30,121 @@ const styles = theme => ({
     margin: theme.spacing.unit * 2,
   },
 });
+
+const items = {
+  'Apple': 11,
+  'Banana': 7,
+  'Orange': 23,
+};
+
+const deliveries = [
+  {
+    'bankName': '1',
+    'deliveryDate': 'Sunday, 14 April 2019',
+    'farmName': '1',
+    'items': items,
+    'percentAdditional': 40,
+    'percentComplete': 35,
+  },
+  {
+    'bankName': '1',
+    'deliveryDate': 'Sunday, 14 April 2019',
+    'farmName': '1',
+    'items': items,
+    'percentAdditional': 40,
+    'percentComplete': 35,
+  },
+  {
+    'bankName': '1',
+    'deliveryDate': 'Sunday, 14 April 2019',
+    'farmName': '1',
+    'items': items,
+    'percentAdditional': 40,
+    'percentComplete': 35,
+  },
+  {
+    'bankName': '1',
+    'deliveryDate': 'Sunday, 14 April 2019',
+    'farmName': '1',
+    'items': items,
+    'percentAdditional': 40,
+    'percentComplete': 35,
+  },
+  {
+    'bankName': '1',
+    'deliveryDate': 'Sunday, 14 April 2019',
+    'farmName': '1',
+    'items': items,
+    'percentAdditional': 40,
+    'percentComplete': 35,
+  },
+]
+
+const listings = [
+  {
+    itemName: 'Apple',
+    percentAdditional: 40,
+    percentComplete: 60,
+    price: '3.50',
+    timeLeft: '3d',
+  },
+  {
+    itemName: 'Apple',
+    percentAdditional: 40,
+    percentComplete: 60,
+    price: '3.50',
+    timeLeft: '3d',
+  },
+  {
+    itemName: 'Apple',
+    percentAdditional: 40,
+    percentComplete: 60,
+    price: '3.50',
+    timeLeft: '3d',
+  },
+  {
+    itemName: 'Apple',
+    percentAdditional: 40,
+    percentComplete: 60,
+    price: '3.50',
+    timeLeft: '3d',
+  },
+  {
+    itemName: 'Apple',
+    percentAdditional: 40,
+    percentComplete: 60,
+    price: '3.50',
+    timeLeft: '3d',
+  },
+  {
+    itemName: 'Apple',
+    percentAdditional: 40,
+    percentComplete: 60,
+    price: '3.50',
+    timeLeft: '3d',
+  },
+  {
+    itemName: 'Apple',
+    percentAdditional: 40,
+    percentComplete: 60,
+    price: '3.50',
+    timeLeft: '3d',
+  },
+  {
+    itemName: 'Apple',
+    percentAdditional: 40,
+    percentComplete: 60,
+    price: '3.50',
+    timeLeft: '3d',
+  },
+  {
+    itemName: 'Apple',
+    percentAdditional: 40,
+    percentComplete: 60,
+    price: '3.50',
+    timeLeft: '3d',
+  },
+]
 
 class App extends Component {
   help = () => {
@@ -163,33 +197,17 @@ class App extends Component {
               <div className="scroll-container">
                 <br/><br/>
                 <Grid container>
-                  <Grid item xs={12} md={6} lg={4}>
-                    <ListingCard />
-                  </Grid>
-                  <Grid item xs={12} md={6} lg={4}>
-                    <ListingCard />
-                  </Grid>
-                  <Grid item xs={12} md={6} lg={4}>
-                    <ListingCard />
-                  </Grid>
-                  <Grid item xs={12} md={6} lg={4}>
-                    <ListingCard />
-                  </Grid>
-                  <Grid item xs={12} md={6} lg={4}>
-                    <ListingCard />
-                  </Grid>
-                  <Grid item xs={12} md={6} lg={4}>
-                    <ListingCard />
-                  </Grid>
-                  <Grid item xs={12} md={6} lg={4}>
-                    <ListingCard />
-                  </Grid>
-                  <Grid item xs={12} md={6} lg={4}>
-                    <ListingCard />
-                  </Grid>
-                  <Grid item xs={12} md={6} lg={4}>
-                    <ListingCard />
-                  </Grid>
+                  {listings.map((val) => {
+                    return (<Grid item xs={12} md={6} lg={4}>
+                      <ListingCard 
+                        itemName={val['itemName']}
+                        percentAdditional={val['percentAdditional']}
+                        percentComplete={val['percentComplete']}
+                        price={val['price']}
+                        timeLeft={val['timeLeft']}
+                      />
+                    </Grid>);
+                  })}
                 </Grid>
               </div>
             </Grid>
@@ -200,54 +218,20 @@ class App extends Component {
                   Upcoming Deliveries
                 </Typography>
                 <Grid container>
-                  <UpcomingDelivery />
-                  <UpcomingDelivery />
-                  <UpcomingDelivery />
-                  <UpcomingDelivery />
-                  <UpcomingDelivery />
-                  <UpcomingDelivery />
+                  {deliveries.map((val) => {
+                    return (<UpcomingDelivery 
+                      bankName={val['bankName']}
+                      deliveryDate={val['deliveryDate']} 
+                      farmName={val['farmName']}
+                      items={val['items']} 
+                      percentAdditional={val['percentAdditional']}
+                      percentComplete={val['percentComplete']}
+                    />);
+                  })}
                 </Grid>
               </div>
             </Grid>
           </Grid>
-          {/* <div className="pageBody">
-            <div className="Inventory">
-              <InventoryCard />
-              <InventoryCard />
-              <InventoryCard />
-              <InventoryCard />
-              <InventoryCard />
-              <InventoryCard />
-            </div>
-            <hr className="SectionDivider" />
-            <div className="Map">
-              <img src="/img/map.png" className="MapImage" />
-            </div>
-            <hr className="SectionDivider" />
-            <Typography variant="h5" color="default" noWrap className="SectionTitle">
-              You May Need
-            </Typography>
-            <div className="RecommendedSection">
-              <ListingCard />
-              <ListingCard />
-              <ListingCard />
-              <ListingCard />
-              <ListingCard />
-              <ListingCard />
-            </div>
-            <hr className="SectionDivider" />
-            <Typography variant="h5" color="default" noWrap className="SectionTitle">
-              Highly Discounted
-            </Typography>
-            <div className="DiscountSection">
-              <ListingCard />
-              <ListingCard />
-              <ListingCard />
-              <ListingCard />
-              <ListingCard />
-              <ListingCard />
-            </div>
-          </div> */}
         </div>
       </MuiThemeProvider>
     );

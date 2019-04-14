@@ -29,21 +29,21 @@ class ListingCard extends React.Component {
             <Card className={classes.card}>
                 <CardMedia
                     className="listingCardImg"
-                    image="/img/apple.png"
+                    image={`/img/${this.props.itemName.toLowerCase()}.png`}
                     title="Apple"
                 />
                 <CardContent>
                     <Typography variant="h6" className="listingCardDesc">
-                        Apples
+                        {this.props.itemName ? this.props.itemName+'s' : ''}
                     </Typography>
                     <Typography variant="h6" className="listingCardDesc">
-                        $3
+                        ${this.props.price}
                     </Typography>
                 </CardContent>
-                <LinearProgress className="ProgressBar" value={70} valueBuffer={100} variant="buffer" />
+                <LinearProgress className="ProgressBar" value={this.props.percentComplete} valueBuffer={this.props.percentAdditional + this.props.percentComplete} variant="buffer" />
                 <CardContent>
                     <Typography variant="h6" className="listingCardDesc">
-                        Time left: 3d
+                        Time left: {this.props.timeLeft}
                     </Typography>
                 </CardContent>
             </Card>

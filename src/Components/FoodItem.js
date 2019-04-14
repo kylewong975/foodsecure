@@ -12,9 +12,9 @@ export default class FoodItem extends React.Component {
     render() {
         return (
             <div className="FoodItem">
-                <img src="/img/apple.png" className="FoodItemImg" />
-                <span className="FoodItemName">Apple</span>
-                <span className="FoodItemDesc">x11</span>
+                <img src={`/img/${this.props.itemName.toLowerCase()}.png`} className="FoodItemImg" />
+                <span className="FoodItemName">{this.props.itemName}</span>
+                <span className="FoodItemDesc">x{this.props.quantity}</span>
             </div>
         );
     }
