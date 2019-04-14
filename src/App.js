@@ -14,8 +14,8 @@ import Logo from '@material-ui/icons/Fastfood';
 import HelpIcon from '@material-ui/icons/HelpOutline';
 import NotificationsIcon from '@material-ui/icons/Notifications';
 import ProfileIcon from '@material-ui/icons/AccountCircle';
-import InventoryCard from './Components/InventoryCard';
 import ListingCard from './Components/ListingCard';
+import UpcomingDelivery from './Components/UpcomingDelivery';
 
 import './App.css';
 
@@ -161,6 +161,7 @@ class App extends Component {
           <Grid container direction="row" className="page-container">
             <Grid item xs={6} className="Inventory">
               <div className="scroll-container">
+                <br/><br/>
                 <Grid container>
                   <Grid item xs={12} md={6} lg={4}>
                     <ListingCard />
@@ -193,9 +194,20 @@ class App extends Component {
               </div>
             </Grid>
             <Grid item xs={6} className="UpcomingDeliveries">
-              <Typography variant="h5" color="default" noWrap>
-                Upcoming Deliveries
-              </Typography>
+              <div className="scroll-container">
+                <br/><br/>
+                <Typography variant="h5" color="default" noWrap className="deliveryHeader">
+                  Upcoming Deliveries
+                </Typography>
+                <Grid container>
+                  <UpcomingDelivery />
+                  <UpcomingDelivery />
+                  <UpcomingDelivery />
+                  <UpcomingDelivery />
+                  <UpcomingDelivery />
+                  <UpcomingDelivery />
+                </Grid>
+              </div>
             </Grid>
           </Grid>
           {/* <div className="pageBody">
