@@ -14,6 +14,7 @@ const styles = {
         marginRight: 10,
         marginTop: 5,
         marginBottom: 5,
+        height: 200,
         flex: 1,
         overflow: 'auto',
     },

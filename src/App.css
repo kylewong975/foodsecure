@@ -24,6 +24,10 @@
   overflow-x: hidden;
 }
 
+.pageBody {
+  padding: 25px;
+}
+
 .header {
   background-color: #00ff7f;
 }
@@ -43,6 +47,39 @@
 }
 
 .Inventory {
+  display: flex;
+  flex-direction: row;
+  white-space: nowrap;
+  overflow-x: auto;
+}
+
+.Map {
+  background-size: cover;
+}
+
+.MapImage {
+  height: 275px;
+  width: 100%;
+}
+
+.SectionDivider {
+  margin-top: 20px;
+  margin-left: 40%;
+  margin-right: 40%;
+}
+
+.SectionTitle {
+  padding-left: 10px;
+}
+
+.RecommendedSection {
+  display: flex;
+  flex-direction: row;
+  white-space: nowrap;
+  overflow-x: auto;
+}
+
+.DiscountSection {
   display: flex;
   flex-direction: row;
   white-space: nowrap;

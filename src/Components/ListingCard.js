@@ -27,21 +27,21 @@ class ListingCard extends React.Component {
         return (
             <Card className={classes.card}>
                 <CardMedia
-                    className={"cardImg"}
+                    className="listingCardImg"
                     image="/img/apple.png"
                     title="Apple"
                 />
                 <CardContent>
-                    <Typography variant="h6" className="cardDesc">
+                    <Typography variant="h6" className="listingCardDesc">
                         Apples
                     </Typography>
-                    <Typography variant="h6" className="cardDesc">
+                    <Typography variant="h6" className="listingCardDesc">
                         $3
                     </Typography>
                 </CardContent>
                 <LinearProgress className="ProgressBar" value={70} valueBuffer={100} variant="buffer" />
                 <CardContent>
-                    <Typography variant="h6" className="cardDesc">
+                    <Typography variant="h6" className="listingCardDesc">
                         Time left: 3d
                     </Typography>
                 </CardContent>
