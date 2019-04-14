@@ -17,20 +17,22 @@ export default class UpcomingDelivery extends React.Component {
                     <Grid item xs={6} className="deliveryCardMetadata">
                         <CardContent>
                             <Typography variant="h5" className="deliveryCardDate">
-                                Sunday, 14 Apr 2019
+                                {this.props.deliveryDate}
                             </Typography>
                             <Typography variant="p" className="deliveryCardBank">
-                                Bank 1
+                                Bank: {this.props.bankName}
                             </Typography>
                             <Typography variant="p" className="deliveryCardFarm">
-                                Farm 1
+                                Farm: {this.props.farmName}
                             </Typography>
                         </CardContent>
                     </Grid>
                     <Grid item xs={6} className="FoodItemList">
-                        <FoodItem />
-                        <FoodItem />
-                        <FoodItem />
+                        {Object.keys(this.props.items).map((val, i) => {
+                            if(i >= 3)
+                                return null;
+                            return <FoodItem itemName={val} quantity={this.props.items[val]} />;
+                        })}
                     </Grid>
                 </Grid>
                 <div className="referralArea">
@@ -46,8 +48,8 @@ export default class UpcomingDelivery extends React.Component {
                     </div>
                     <LinearProgress 
                         className="ReferralProgressBar" 
-                        value={70} 
-                        valueBuffer={100} 
+                        value={this.props.percentComplete} 
+                        valueBuffer={this.props.percentComplete + this.props.percentAdditional} 
                         variant="buffer" 
                     />
                 </div>
