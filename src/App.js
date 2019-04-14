@@ -158,28 +158,39 @@ class App extends Component {
               </div>
             </Toolbar>
           </AppBar>
-          <Grid container direction="row">
+          <Grid container direction="row" className="page-container">
             <Grid item xs={6} className="Inventory">
-              <Grid container>
-                <Grid item xs={6}>
-                  <ListingCard />
+              <div className="scroll-container">
+                <Grid container>
+                  <Grid item xs={12} md={6} lg={4}>
+                    <ListingCard />
+                  </Grid>
+                  <Grid item xs={12} md={6} lg={4}>
+                    <ListingCard />
+                  </Grid>
+                  <Grid item xs={12} md={6} lg={4}>
+                    <ListingCard />
+                  </Grid>
+                  <Grid item xs={12} md={6} lg={4}>
+                    <ListingCard />
+                  </Grid>
+                  <Grid item xs={12} md={6} lg={4}>
+                    <ListingCard />
+                  </Grid>
+                  <Grid item xs={12} md={6} lg={4}>
+                    <ListingCard />
+                  </Grid>
+                  <Grid item xs={12} md={6} lg={4}>
+                    <ListingCard />
+                  </Grid>
+                  <Grid item xs={12} md={6} lg={4}>
+                    <ListingCard />
+                  </Grid>
+                  <Grid item xs={12} md={6} lg={4}>
+                    <ListingCard />
+                  </Grid>
                 </Grid>
-                <Grid item xs={6}>
-                  <ListingCard />
-                </Grid>
-                <Grid item xs={6}>
-                  <ListingCard />
-                </Grid>
-                <Grid item xs={6}>
-                  <ListingCard />
-                </Grid>
-                <Grid item xs={6}>
-                  <ListingCard />
-                </Grid>
-                <Grid item xs={6}>
-                  <ListingCard />
-                </Grid>
-              </Grid>
+              </div>
             </Grid>
             <Grid item xs={6} className="UpcomingDeliveries">
               <Typography variant="h5" color="default" noWrap>

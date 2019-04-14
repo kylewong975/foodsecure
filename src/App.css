@@ -25,7 +25,20 @@
   margin-right: 20px;
 }
 
+.page-container {
+  height: 100%;
+}
+
+.scroll-container {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+}
+
 .Inventory {
+  position: relative;
   display: flex;
   padding-left: 20px;
   padding-right: 20px;
@@ -35,6 +48,7 @@
   overflow-x: hidden;
   overflow-y: auto;
   display: flex;
+  height: 100%;
 }
 
 .UpcomingDeliveries {
