@@ -75,8 +75,52 @@ class ListingCard extends React.Component {
         return word;
     }
 
-    recommendedRecipes(word) {
-        console.log(word);
+    getRecipes = () => {
+        let food = this.props.itemName.toLowerCase()
+        if(food == "apple") {
+            return 'Apple Pie\nApple Cider\nCinnamon Toast with Apple';
+        }
+        else if(food == "banana") {
+            return 'Banana Cream Pie\nStrawberry Banana Smoothie';
+        }
+        else if(food == "broccoli") {
+            return 'Broccoli Casserole\nVegetable Platter with Ranch Dressing';
+        }
+        else if(food == "butter") {
+            return 'Cheesecake\nDanish Cookie\nCake'
+        }
+        else if(food == "carrot") {
+            return 'Carrot Lentil Soup\nVegetable Platter with Ranch Dressing';
+        }
+        else if(food == "chips") {
+            return 'Fish and Chips\nTurkey Sandwich with Chips\nHam Sandwich with Chips';
+        }
+        else if(food == "orange") {
+            return 'Orange Smoothie\nTangerine Cake\nOrange Sorbet';
+        }
+        else if(food == "pasta") {
+            return 'Spaghetti and Meatballs\nPesto Pasta\nLasagna';
+        }
+        else if(food == "peanut butter") {
+            return 'Greek Yogurt with Peanut Butter Drizzle\nAcai Bowl with Peanut Butter Drizzle\nPeanut Butter Cookie';
+        }
+        else if(food == "pizza") {
+            return 'Cheese Pizza\nPepperoni Pizza\nCombo Pizza';
+        }
+        else if(food == "salmon") {
+            return 'Seared Salmon\nLox Bagel\nFresh Salmon';
+        }
+        else if(food == "soda") {
+            return 'Sprite\nGinger Ale\nCoca Cola';
+        }
+        return 'No recommended recipes';
+    }
+
+    recommendedRecipes = () => {
+        swal({
+            title: 'Recommended Recipes',
+            text: this.getRecipes(),
+        })
     }
 
     render() {
