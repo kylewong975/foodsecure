@@ -48,7 +48,6 @@ def user_get_nearest_centers(request):
   bank1 = (bank1.latitude, bank1.longitude)
   bank2 = (bank2.latitude, bank2.longitude)
   print(distance(bank1, bank2).km)
-  # ("location").location.compareTo(docs.stream().location))
   return HttpResponse("asd")  
 
 def get_bank_food(request, bank_id, food_id=None):
@@ -96,11 +95,3 @@ def get_bank_food(request, bank_id, food_id=None):
     items += [item]
 
   return JsonResponse(items, safe=False)
-
-  # docs = db.collection("food_banks").stream()
-  # bank1 = next(docs).get("location")
-  # bank2 = next(docs).get("location")
-  # bank1 = (bank1.latitude, bank1.longitude)
-  # bank2 = (bank2.latitude, bank2.longitude)
-  # print(distance(bank1, bank2).km)
-
