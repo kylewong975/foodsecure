@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import swal from 'sweetalert';
 import { withStyles } from '@material-ui/core/styles';
 import Card from '@material-ui/core/Card';
 import CardActionArea from '@material-ui/core/CardActionArea';
@@ -74,11 +75,18 @@ class ListingCard extends React.Component {
         return word;
     }
 
+    recommendedRecipes(word) {
+        console.log(word);
+    }
+
     render() {
         const { classes } = this.props;
         return (
             <Card className={classes.card}>
-                <CardActionArea>
+                <CardActionArea
+                    onClick={this.recommendedRecipes}
+                    value={this.props.itemName.toLowerCase()}
+                >
                     <CardMedia
                         className="listingCardImg"
                         image={`/img/${this.props.itemName.toLowerCase()}.png`}
@@ -125,7 +133,7 @@ class ListingCard extends React.Component {
                         <FormControl className={classes.formControl}>
                             <InputLabel htmlFor="age-simple">Frequency</InputLabel>
                             <Select
-                                value={this.state.age}
+                                value={this.state.frequency}
                                 onChange={this.handleChange('frequency')}
                                 inputProps={{
                                     name: 'frequency',
@@ -145,7 +153,7 @@ class ListingCard extends React.Component {
                         <FormControl className={classes.formControl}>
                             <InputLabel htmlFor="age-simple">Duration</InputLabel>
                             <Select
-                                value={this.state.age}
+                                value={this.state.duration}
                                 onChange={this.handleChange('duration')}
                                 inputProps={{
                                     name: 'duration',

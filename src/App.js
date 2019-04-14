@@ -49,7 +49,25 @@ const SEARCH_RESULTS = [
 const items = {
   'Apple': 11,
   'Banana': 7,
-  'Peanut Butter': 23,
+  'Peanut Butter': 3,
+};
+
+const items2 = {
+  'Carrot': 20,
+  'Salmon': 11,
+  'Soda': 45,
+};
+
+const items3 = {
+  'Butter': 3,
+  'Pasta': 2,
+  'Pizza': 5,
+};
+
+const items4 = {
+  'Orange': 15,
+  'Pasta': 17,
+  'Pizza': 1,
 };
 
 const deliveries = [
@@ -63,32 +81,32 @@ const deliveries = [
   },
   {
     'bankName': '1',
-    'deliveryDate': 'Sunday, 14 April 2019',
-    'farmName': '1',
-    'items': items,
+    'deliveryDate': 'Tuesday, 16 April 2019',
+    'farmName': '2',
+    'items': items2,
     'percentAdditional': 27,
     'percentComplete': 2,
   },
   {
-    'bankName': '1',
-    'deliveryDate': 'Sunday, 14 April 2019',
+    'bankName': '2',
+    'deliveryDate': 'Saturday, 20 April 2019',
     'farmName': '1',
-    'items': items,
+    'items': items3,
     'percentAdditional': 70,
     'percentComplete': 20,
   },
   {
-    'bankName': '1',
-    'deliveryDate': 'Sunday, 14 April 2019',
-    'farmName': '1',
-    'items': items,
+    'bankName': '2',
+    'deliveryDate': 'Sunday, 21 April 2019',
+    'farmName': '2',
+    'items': items4,
     'percentAdditional': 50,
     'percentComplete': 50,
   },
   {
-    'bankName': '1',
-    'deliveryDate': 'Sunday, 14 April 2019',
-    'farmName': '1',
+    'bankName': '2',
+    'deliveryDate': 'Monday, 22 April 2019',
+    'farmName': '3',
     'items': items,
     'percentAdditional': 45,
     'percentComplete': 35,
