@@ -249,10 +249,10 @@ class App extends Component {
 
   componentDidMount() {
     this.getBankFood('')
+  }
 
   onSetSidebarOpen = (open) => {
     this.setState({ isSidebarOpen: open });
-
   }
 
   render() {
