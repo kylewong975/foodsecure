@@ -103,4 +103,15 @@ venv.bak/
 
 # mypy
 .mypy_cache/
-foodsecure-e90f6ed95291.json
+
+# Golang
+foodsecure-a581e2b899a2.json
+temp
+go-workspace/src/cloud.google.com/
+go-workspace/src/firebase.google.com/
+go-workspace/src/github.com/
+go-workspace/src/go.opencensus.io/
+go-workspace/src/golang.org/
+go-workspace/src/google.golang.org/
+go-workspace/bin/
+.air.conf
