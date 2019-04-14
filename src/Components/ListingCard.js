@@ -10,13 +10,14 @@ import './ListingCard.css';
 
 const styles = {
     card: {
-        width: 345,
+        width: 250,
+        height: 275,
         marginLeft: 10,
         marginRight: 10,
-        marginTop: 5,
-        marginBottom: 5,
+        marginTop: 15,
+        marginBottom: 15,
+        paddingTop: 15,
         flex: 1,
-        overflow: 'auto',
     },
 };
 

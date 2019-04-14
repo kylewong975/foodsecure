@@ -1,25 +1,8 @@
-.bottom-nav{
-  width: 100%;
-  position: fixed;
-  bottom: 0;
-}
-.center-fab{
-  height: 100px;
-  width: 100px;
-  box-sizing: border-box;
-  padding-top: 17px;
-  margin-top: -32px;
-  text-align: center;
-  border: 5px solid #FFAFA4;
-  border-radius: 50%;
-  color: #FFAFA4;
-  background-color: white;
-  z-index: 1000;
-}
 .page{
   height: calc(100vh - 56px);
   box-sizing: border-box;
   width: 100vw;
+  margin-top: 75px;
   overflow-y: scroll;
   overflow-x: hidden;
 }
@@ -32,21 +15,45 @@
   background-color: #00ff7f;
 }
 
+.logo {
+  margin-right: 10px;
+}
+
 .headerIcons {
   position: absolute;
   right: 0;
   margin-right: 20px;
 }
 
-.nextDeliveryBanner {
-  background-color: #fff68e;
-  text-align: center;
-  padding-top: 10px;
-  padding-bottom: 10px;
-  margin-top: -5px;
+.Inventory {
+  display: flex;
+  padding-left: 20px;
+  padding-right: 20px;
+  padding-top: 15px;
+  padding-bottom: 15px;
+  border-right: 1px solid gray;
+  overflow-x: hidden;
+  overflow-y: auto;
+  display: flex;
 }
 
-.Inventory {
+.UpcomingDeliveries {
+  display: flex;
+  padding-left: 20px;
+  padding-right: 20px;
+  padding-top: 15px;
+  padding-bottom: 15px;
+  overflow-x: hidden;
+  overflow-y: auto;
+}
+
+.swal-modal {
+  margin-left: auto;
+  margin-right: auto;
+  width: 50%;
+}
+
+/* .Inventory {
   display: flex;
   flex-direction: row;
   white-space: nowrap;
@@ -58,7 +65,7 @@
 }
 
 .MapImage {
-  height: 275px;
+  height: 350px;
   width: 100%;
 }
 
@@ -84,4 +91,4 @@
   flex-direction: row;
   white-space: nowrap;
   overflow-x: auto;
-}
+} */

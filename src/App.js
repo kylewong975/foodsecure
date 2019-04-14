@@ -1,14 +1,19 @@
 import React, { Component } from 'react';
-import { BottomNavigation, BottomNavigationAction, Modal } from '@material-ui/core';
+import { withStyles } from '@material-ui/core/styles';
+import swal from 'sweetalert';
 import { MuiThemeProvider, createMuiTheme } from '@material-ui/core/styles';
 import AppBar from '@material-ui/core/AppBar';
+import Badge from '@material-ui/core/Badge';
 import Grid from '@material-ui/core/Grid';
+import Icon from '@material-ui/core/Icon';
 import IconButton from '@material-ui/core/IconButton';
 import Toolbar from '@material-ui/core/Toolbar';
 import Tooltip from '@material-ui/core/Tooltip';
 import Typography from '@material-ui/core/Typography';
-import OrderIcon from '@material-ui/icons/AddShoppingCart';
-import ReferIcon from '@material-ui/icons/SupervisorAccount';
+import Logo from '@material-ui/icons/Fastfood';
+import HelpIcon from '@material-ui/icons/HelpOutline';
+import NotificationsIcon from '@material-ui/icons/Notifications';
+import ProfileIcon from '@material-ui/icons/AccountCircle';
 import InventoryCard from './Components/InventoryCard';
 import ListingCard from './Components/ListingCard';
 
@@ -101,34 +106,88 @@ const theme = createMuiTheme({
   },
 });
 
+const styles = theme => ({
+  margin: {
+    margin: theme.spacing.unit * 2,
+  },
+});
+
 class App extends Component {
+  help = () => {
+    let image = document.createElement("img");
+    image.src = "/img/apple.png";
+    swal({
+      content: image,
+      button: {
+        text: "Close",
+      },
+    })
+  }
+
   render() {
+    const { classes } = this.props;
     return (
       <MuiThemeProvider theme={theme}>
         <div className="page">
-          <AppBar position="static">
+          <AppBar>
             <Toolbar className="header">
+              <Icon color="action" className="logo">
+                <Logo />
+              </Icon>
               <Typography variant="h5" color="default" noWrap>
                 FoodSecure
               </Typography>
               <div className="headerIcons">
-                <Tooltip title="Order Item">
-                  <IconButton color="default">
-                    <OrderIcon />
+                <Tooltip title="Help">
+                  <IconButton color="default" onClick={this.help}>
+                    <HelpIcon />
                   </IconButton>
                 </Tooltip>
-                <Tooltip title="Invite Friends">
+                <Tooltip title="Notifications">
                   <IconButton color="default">
-                    <ReferIcon />
+                    <Badge className={classes.margin} badgeContent={4} color="primary">
+                      <NotificationsIcon />
+                    </Badge>
+                  </IconButton>
+                </Tooltip>
+                <Tooltip title="Profile">
+                  <IconButton color="default">
+                    <ProfileIcon />
                   </IconButton>
                 </Tooltip>
               </div>
             </Toolbar>
           </AppBar>
-          <p className="nextDeliveryBanner">
-            Next Delivery: Friday @ Food Bank
-          </p>
-          <div className="pageBody">
+          <Grid container direction="row">
+            <Grid item xs={6} className="Inventory">
+              <Grid container>
+                <Grid item xs={6}>
+                  <ListingCard />
+                </Grid>
+                <Grid item xs={6}>
+                  <ListingCard />
+                </Grid>
+                <Grid item xs={6}>
+                  <ListingCard />
+                </Grid>
+                <Grid item xs={6}>
+                  <ListingCard />
+                </Grid>
+                <Grid item xs={6}>
+                  <ListingCard />
+                </Grid>
+                <Grid item xs={6}>
+                  <ListingCard />
+                </Grid>
+              </Grid>
+            </Grid>
+            <Grid item xs={6} className="UpcomingDeliveries">
+              <Typography variant="h5" color="default" noWrap>
+                Upcoming Deliveries
+              </Typography>
+            </Grid>
+          </Grid>
+          {/* <div className="pageBody">
             <div className="Inventory">
               <InventoryCard />
               <InventoryCard />
@@ -137,11 +196,11 @@ class App extends Component {
               <InventoryCard />
               <InventoryCard />
             </div>
-            <hr className="SectionDivider"/>
+            <hr className="SectionDivider" />
             <div className="Map">
               <img src="/img/map.png" className="MapImage" />
             </div>
-            <hr className="SectionDivider"/>
+            <hr className="SectionDivider" />
             <Typography variant="h5" color="default" noWrap className="SectionTitle">
               You May Need
             </Typography>
@@ -153,7 +212,7 @@ class App extends Component {
               <ListingCard />
               <ListingCard />
             </div>
-            <hr className="SectionDivider"/>
+            <hr className="SectionDivider" />
             <Typography variant="h5" color="default" noWrap className="SectionTitle">
               Highly Discounted
             </Typography>
@@ -165,11 +224,11 @@ class App extends Component {
               <ListingCard />
               <ListingCard />
             </div>
-          </div>
+          </div> */}
         </div>
       </MuiThemeProvider>
     );
   }
 }
 
-export default App;
+export default withStyles(styles)(App);
