@@ -125,6 +125,13 @@ const listings = [
     timeLeft: '4d',
   },
   {
+    itemName: 'Carrot',
+    percentAdditional: 15,
+    percentComplete: 70,
+    price: '0.89',
+    timeLeft: '1d',
+  },
+  {
     itemName: 'Chips',
     percentAdditional: 25,
     percentComplete: 25,
