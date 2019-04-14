@@ -26,7 +26,7 @@ SECRET_KEY = 'c@(4*yrkv3=+m2m!qmfi8-t9#6%q^uggei5_o!_&fzj044e-ki'
 DEBUG = True
 
 ALLOWED_HOSTS = ['.ngrok.io', 'localhost']
-
+CORS_ORIGIN_ALLOW_ALL = True
 
 # Application definition
 
@@ -37,9 +37,11 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'corsheaders',
 ]
 
 MIDDLEWARE = [
+    'corsheaders.middleware.CorsMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',

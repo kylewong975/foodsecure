@@ -107,7 +107,7 @@ def get_ids(request, collection):
 
   return JsonResponse({"ids": ids})
 
-def get_bank_food(request, bank_id, food_id=None):
+def get_bank_food(request, food_bank_id, food_id=None):
   if request.method != "GET":
     raise exceptions.ViewDoesNotExist
 
@@ -126,7 +126,7 @@ def get_bank_food(request, bank_id, food_id=None):
     item["farm_name"] = farm.get("name")
     farm_loc = (farm.get("location").latitude, farm.get("location").longitude)
 
-    bank = db.collection("food_banks").document(bank_id).get()
+    bank = db.collection("food_banks").document(food_bank_id).get()
     assert bank.exists
     bank_loc = (bank.get("location").latitude, bank.get("location").longitude)
 
