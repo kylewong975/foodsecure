@@ -1,8 +1,9 @@
 from django.shortcuts import render, HttpResponse
-from django.http import JsonResponse
+from django.http import JsonResponse, HttpResponseNotFound
 from google.cloud import firestore
 from geopy.distance import distance
 from django.core import exceptions
+import datetime
 
 from . import utils
 db = firestore.Client()
@@ -26,6 +27,51 @@ def create_food_bank(request, lat, long):
       "location": location
   })
   return HttpResponse("sure")
+
+def create_order(request):
+  if request.method != "POST":
+    raise exceptions.ViewDoesNotExist
+
+  farm_food_id = request.POST["farm_food_id"]
+  food_bank_id = request.POST["food_bank_id"]
+  user_id = request.POST["user_id"]
+  qty = request.POST["qty"]
+
+  # get documents
+  farm_food = db.collection("farm_foods").document(farm_food_id).get()
+  farm = farm_food.get("farm").get()
+  food_bank = db.collection("food_banks").document(food_bank_id).get()
+  user = db.collection("users").document(user_id).get()
+
+  # get or create drop
+  drop_gen = db.collection("drops").where("farm", "==", farm.reference).get()
+  drop = None
+  for d in drop_gen:
+    drop = d
+  if drop == None:
+    # create new drop
+    doc_ref = db.collection("drops").document()
+    deadline = datetime.now() + datetime.timedelta(weeks=1)
+    doc_ref.set({
+      "deadline": deadline,
+      "farm": farm.reference,
+      "food_bank": food_bank.reference,
+      "quota": 50
+    })
+    drop = doc_ref.get()
+
+  # create order
+  doc_ref = db.collection("orders").document()
+  doc_ref.set({
+    "drop": drop.reference,
+    "farm_food": farm_food.reference,
+    "user": user.reference,
+    "qty": qty
+  })
+  doc_dict = doc_ref.get().to_dict()
+  print(doc_dict)
+
+  return HttpResponse("created")
 
 # returns 5 nearest
 def user_get_nearest_centers(request):
@@ -62,6 +108,7 @@ def get_bank_food(request, bank_id, food_id=None):
   items = []
   for doc in query.stream(): # each doc is a farm_food
     item = {}
+    item["farm_food_id"] = doc.id
     item["food_name"] = doc.get("food").get().get("name")
     farm = doc.get("farm").get()
     assert farm.exists
