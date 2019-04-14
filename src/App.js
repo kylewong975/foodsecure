@@ -34,7 +34,7 @@ const styles = theme => ({
 const items = {
   'Apple': 11,
   'Banana': 7,
-  'Orange': 23,
+  'Peanut Butter': 23,
 };
 
 const deliveries = [
@@ -89,14 +89,14 @@ const listings = [
     timeLeft: '3d',
   },
   {
-    itemName: 'Apple',
+    itemName: 'Salmon',
     percentAdditional: 40,
     percentComplete: 60,
     price: '3.50',
     timeLeft: '3d',
   },
   {
-    itemName: 'Apple',
+    itemName: 'Orange',
     percentAdditional: 40,
     percentComplete: 60,
     price: '3.50',

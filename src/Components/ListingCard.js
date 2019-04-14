@@ -22,6 +22,14 @@ const styles = {
 };
 
 class ListingCard extends React.Component {
+    pluralizeWord(word) {
+        if(!word)
+            return '';
+        let noPluralize = ["peanut butter", "soda", "pizza", "chips", "butter", "pasta", "salmon"];
+        if(!noPluralize.includes(word.toLowerCase()))
+            return word + "s";
+        return word;
+    }
 
     render() {
         const { classes } = this.props;
@@ -34,7 +42,7 @@ class ListingCard extends React.Component {
                 />
                 <CardContent>
                     <Typography variant="h6" className="listingCardDesc">
-                        {this.props.itemName ? this.props.itemName+'s' : ''}
+                        {this.pluralizeWord(this.props.itemName)}
                     </Typography>
                     <Typography variant="h6" className="listingCardDesc">
                         ${this.props.price}
