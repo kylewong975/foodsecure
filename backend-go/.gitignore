@@ -114,3 +114,4 @@ go-workspace/src/go.opencensus.io/
 go-workspace/src/golang.org/
 go-workspace/src/google.golang.org/
 go-workspace/bin/
+.air.conf
