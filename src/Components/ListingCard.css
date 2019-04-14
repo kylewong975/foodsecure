@@ -15,3 +15,7 @@
 .listingCardDesc {
     text-align: center;
 }
+
+.inlineForm {
+    display: inline-block;
+}

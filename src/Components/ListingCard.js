@@ -4,18 +4,22 @@ import Card from '@material-ui/core/Card';
 import CardActionArea from '@material-ui/core/CardActionArea';
 import CardActions from '@material-ui/core/CardActions';
 import CardContent from '@material-ui/core/CardContent';
-import CardHeader from '@material-ui/core/CardHeader';
 import CardMedia from '@material-ui/core/CardMedia';
+import FormControl from '@material-ui/core/FormControl';
+import InputLabel from '@material-ui/core/InputLabel';
 import LinearProgress from '@material-ui/core/LinearProgress';
+import MenuItem from '@material-ui/core/MenuItem';
+import Select from '@material-ui/core/Select';
 import Typography from '@material-ui/core/Typography';
 import Button from '@material-ui/core/Button';
 import TextField from '@material-ui/core/TextField';
 import './ListingCard.css';
 
-const styles = {
+const styles = theme => ({
     button: {
         margin: 5,
         flex: 1,
+        marginLeft: 75,
     },
     card: {
         width: 250,
@@ -27,13 +31,29 @@ const styles = {
         paddingBottom: 0,
         flex: 1,
     },
-};
+    formControl: {
+        minWidth: 100,
+        marginRight: 10,
+        marginBottom: 10,
+    },
+    textField: {
+        width: 60,
+        marginRight: 20,
+        marginTop: -36,
+    },
+    textField2: {
+        marginTop: -20,
+        width: 150,
+    }
+});
 
 class ListingCard extends React.Component {
 
     state = {
         qty: null,
-        dlvDate: null  // Delivery Date
+        dlvDate: null,  // Delivery Date
+        frequency: '',
+        duration: '',
     };
 
     handleChange = name => event => {
@@ -81,6 +101,8 @@ class ListingCard extends React.Component {
                 </CardActionArea>
                 <CardActions>
                     <form onSubmit={this.handleSubmit}>
+                        <div>
+                        <div className="inlineForm">
                         <TextField
                             id="standard-number"
                             label="Quantity"
@@ -95,9 +117,55 @@ class ListingCard extends React.Component {
                             value={this.state.dlvDate}
                             onChange={this.handleChange('dlvDate')}
                             type="date"
-                            className={classes.textField}
+                            className={classes.textField2}
                             margin="normal"
                         />
+                        </div>
+                        <div>
+                        <FormControl className={classes.formControl}>
+                            <InputLabel htmlFor="age-simple">Frequency</InputLabel>
+                            <Select
+                                value={this.state.age}
+                                onChange={this.handleChange('frequency')}
+                                inputProps={{
+                                    name: 'frequency',
+                                    id: 'frequency-simple',
+                                }}
+                            >
+                                <MenuItem value="">
+                                <em>None</em>
+                                </MenuItem>
+                                <MenuItem value={"Daily"}>Daily</MenuItem>
+                                <MenuItem value={"Weekly"}>Weekly</MenuItem>
+                                <MenuItem value={"Every 2 Weeks"}>Every 2 Weeks</MenuItem>
+                                <MenuItem value={"Every 3 Weeks"}>Every 2 Weeks</MenuItem>
+                                <MenuItem value={"Every Month"}>Every 2 Weeks</MenuItem>
+                            </Select>
+                        </FormControl>
+                        <FormControl className={classes.formControl}>
+                            <InputLabel htmlFor="age-simple">Duration</InputLabel>
+                            <Select
+                                value={this.state.age}
+                                onChange={this.handleChange('duration')}
+                                inputProps={{
+                                    name: 'duration',
+                                    id: 'duration-simple',
+                                }}
+                            >
+                                <MenuItem value="">
+                                <em>None</em>
+                                </MenuItem>
+                                <MenuItem value={"1 week"}>1 week</MenuItem>
+                                <MenuItem value={"2 weeks"}>2 weeks</MenuItem>
+                                <MenuItem value={"3 weeks"}>3 weeks</MenuItem>
+                                <MenuItem value={"1 month"}>1 month</MenuItem>
+                                <MenuItem value={"2 months"}>2 months</MenuItem>
+                                <MenuItem value={"3 months"}>3 months</MenuItem>
+                                <MenuItem value={"4 months"}>4 months</MenuItem>
+                            </Select>
+                        </FormControl>
+                        </div>
+                        </div>
                         <Button variant="contained" color="primary" className={classes.button} type="submit">
                             Buy
                         </Button>
