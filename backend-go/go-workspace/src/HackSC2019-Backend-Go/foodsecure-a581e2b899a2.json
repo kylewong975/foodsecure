@@ -1,0 +1,12 @@
+{
+  "type": "service_account",
+  "project_id": "foodsecure",
+  "private_key_id": "a581e2b899a2479a546fe9005fc49810bd3453c0",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvQIBADANBgkqhkiG9w0BAQEFAASCBKcwggSjAgEAAoIBAQCTC9kYoMnVfDCd\nvVF8YfFaY58HM6r9RbWdu1OPvwINCYtEs8hsDgqNDdHwnhILRaFhpgsC5VnrETcI\nZp9yAx5IunqnS/EnXii2HigenYpETLdfYkLxgwNTHz8flYjEWJunBRfirn0QLlvN\nRKThIhUULCWd0Nqq+ZAbQPUYo2BHJCBBgVbTU/JwTSy0cuYmudw1Ti4c1umiaHWp\nkStJbgSXfKGnEVrPOgyVQBFZP5Er+1zrlVk1gg0LLhyQIy/Lt4a7peWoTE7ekiq+\nDVznGtmtWCe6HXJUeD/89GJlWkxJuJQPHxYRAI9HfNBSr6ywrXQNidt5Q963fV59\n5QmEABEDAgMBAAECggEANCrfZcvhXyJUkxmvt4t91z4BlMoBTyJ0iNWFEznGDf8F\nUCXiJGek2Z7+DLnfl+0nkF+ah3f7uxgb6JiT15yAmXfC/OhF0Vwn4Fh5jkcA3zNC\nWQ4gxtLekpZCzD8+Sr5O1mXJsAuMZfm0avH/9rkjNkllPQR0F3U7aVfVvFx10zbV\nYajlYiy1HysQnEJAs0lgTDDs85+2McWa2kp3oosBNgf/SglIuYNsdB/EA7SD6HWk\ntA5L905yL1rH9XKyhhXB8UaQF3g1oB9d5kZnNl4jzRXLUhOsKkBeV09TZkD00w+Q\nvg9QzILTPIXv8zCyGhwUjk+3nVJUq5XSxLqjFRDwQQKBgQDO21AAgU3qkpOBQ1Y4\nJOubFc1zHIR/JVjLWUubbp05dyww90M8YXDuvw2YKCx63+Z65HXZCqY7wiRn+h8N\nmJemW4EZo7Pulu5U7UZXtUkOFbdtZDHuQpfizGa3LQgWQHTbBklIYMDmQTgi2sNr\nuRtnFgrw1yFtd8rf+a5/iaCnQwKBgQC1+va45CpGKjw8HdBAK9T8hAr86khX5b7y\nIXwJivinfBtJ9PYeAG1y6K/ZP20rG3sH/ACfFXSHKMFlWg/qR5nZxNW4i6Waq6M3\n6Br5wdgdC615PMQ7tDyz49de9G0nJ8D92U7Ba04R/rJWTswHPbdsjN3uvs54hEVT\nmM3CbTvzQQKBgBJU/VIOI4mWU9wwy4NOQlMMK5j3/gYGmUfsMfckZmqhVRlB0IOZ\nXxjJdbr2VHrPPO3HMWp6tyC0o+VTFU1vKIFlups7FsceOSDtpj4/oqnM4uSe7I3g\n+PTwiGnTY9QVAkYm2HfBm1bMkN0F5iu1y+fm3DFb32qEI0aWKhDDcalhAoGAFR9v\nOeDKA2DtovC29mvgCfttpxOul/1D36kBU748xHwEUt5LHwpfqeHWX3ocOs+yxSd8\nDvsXjoSthg0hIclz0zIkuIoFC+H2TQv07Z6RbjWnyhXClUeDcEH3Ar+OV+gmX5C0\nsoC5DB+rJZd52TFRtBjZvdeJ8bUwstZes72oIsECgYEAu5Rjm3dA4N5kYfWTutDt\nUcOy91M85ZMRZO/iq4fVnz4lYLmTZY1qRvA2Vtcc4BF9CwXh33duxpNJKk9rUcVO\nEJU+GrFLjmmpMlf53zCtWecZo0gZX0Vy41GdI8rkuoMjh08DGZmv3dc0blB3qUJg\nOGN6YqZrjjb4rA4IjW50E40=\n-----END PRIVATE KEY-----\n",
+  "client_email": "foodsecure-server@foodsecure.iam.gserviceaccount.com",
+  "client_id": "116596948513508786861",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://oauth2.googleapis.com/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/foodsecure-server%40foodsecure.iam.gserviceaccount.com"
+}
