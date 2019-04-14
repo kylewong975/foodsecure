@@ -104,7 +104,7 @@ venv.bak/
 # mypy
 .mypy_cache/
 
-# ...
+# Golang
 foodsecure-a581e2b899a2.json
 temp
 go-workspace/src/cloud.google.com/
