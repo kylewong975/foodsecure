@@ -96,6 +96,17 @@ def user_get_nearest_centers(request):
   print(distance(bank1, bank2).km)
   return HttpResponse("asd")  
 
+def get_ids(request, collection):
+  if request.method != "GET":
+    raise exceptions.ViewDoesNotExist
+
+  ids = []
+  query = db.collection(collection)
+  for doc in query.stream():
+    ids += [doc.id]
+
+  return JsonResponse({"ids": ids})
+
 def get_bank_food(request, bank_id, food_id=None):
   if request.method != "GET":
     raise exceptions.ViewDoesNotExist
