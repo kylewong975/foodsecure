@@ -187,7 +187,8 @@ class App extends Component {
 
   help = () => {
     let image = document.createElement("img");
-    image.src = "/img/apple.png";
+    image.src = "/img/instructions.png";
+    image.classList.add("helpImg");
     swal({
       content: image,
       button: {
