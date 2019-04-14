@@ -196,7 +196,7 @@ class App extends Component {
             <Grid item xs={6} className="UpcomingDeliveries">
               <div className="scroll-container">
                 <br/><br/>
-                <Typography variant="h5" color="default" noWrap className="deliveryHeader">
+                <Typography variant="h4" color="default" noWrap className="deliveryHeader">
                   Upcoming Deliveries
                 </Typography>
                 <Grid container>

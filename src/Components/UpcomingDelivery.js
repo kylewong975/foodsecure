@@ -15,7 +15,7 @@ export default class UpcomingDelivery extends React.Component {
                 <Grid container direction="row">
                     <Grid item xs={6} className="deliveryCardMetadata">
                         <CardContent>
-                            <Typography variant="p" className="deliveryCardDate">
+                            <Typography variant="h5" className="deliveryCardDate">
                                 Sunday, 14 Apr 2019
                             </Typography>
                             <Typography variant="p" className="deliveryCardBank">
