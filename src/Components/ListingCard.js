@@ -14,7 +14,10 @@ import Select from '@material-ui/core/Select';
 import Typography from '@material-ui/core/Typography';
 import Button from '@material-ui/core/Button';
 import TextField from '@material-ui/core/TextField';
+import axios from 'axios';
 import './ListingCard.css';
+
+const API_ROOT_ADDRESS = "http://c09d378a.ngrok.io/"
 
 const styles = theme => ({
     button: {
@@ -50,20 +53,49 @@ const styles = theme => ({
 
 class ListingCard extends React.Component {
 
-    state = {
-        qty: null,
-        dlvDate: null,  // Delivery Date
-        frequency: '',
-        duration: '',
-    };
+    constructor(props) {
+        super(props)
+        this.state = {
+            farmFoodId: props.farmFoodId,
+            qty: null,
+            dlvDate: null,  // Delivery Date
+            frequency: '',
+            duration: '',
+            timeLeft: null,
+            foodBankId: props.foodBankId,
+        };
+        if (props.dropDeadline !== null) {
+            let ms = new Date() - Date.parse(props.dropDeadline)
+            this.state.timeLeft = new Date(ms)
+        }
+        console.log(this.props)
+        this.handleSubmit = this.handleSubmit.bind(this);
+    }
 
     handleChange = name => event => {
         this.setState({ [name]: event.target.value });
     };
 
     handleSubmit(event) {
-        alert('A name was submitted: ' + this.state.qty);
+        // alert('A name was submitted: ' + this.state.qty);
         event.preventDefault();
+        let postbody = {
+            farm_food_id: this.state.farmFoodId,
+            food_bank_id: this.state.foodBankId,
+            user_id: "VcLrNxRJ0XQuEujzVycs",
+            qty: this.state.qty,
+        }
+        let config = {
+          headers: {
+            'Content-Type': 'application/x-www-form-urlencoded'
+          }
+        }
+        console.log(postbody)
+        axios.post(API_ROOT_ADDRESS + 'create_order/', postbody, config)
+        .then(response => {
+          console.log(response.data)
+        })
+        .catch(message => console.warn(message))
     };
 
     pluralizeWord(word) {
@@ -81,6 +113,15 @@ class ListingCard extends React.Component {
 
     render() {
         const { classes } = this.props;
+        let TimeLeftComponent;
+        if (this.state.timeLeft !== null) {
+            TimeLeftComponent = 
+                <CardContent>
+                    <Typography variant="body1" className="listingCardDesc">
+                        {this.state.timeLeft.getHours()} hours left
+                    </Typography>
+                </CardContent>;
+        }
         return (
             <Card className={classes.card}>
                 <CardActionArea
@@ -90,22 +131,21 @@ class ListingCard extends React.Component {
                     <CardMedia
                         className="listingCardImg"
                         image={`/img/${this.props.itemName.toLowerCase()}.png`}
-                        title="Apple"
+                        title={this.props.key}
                     />
                     <CardContent>
                         <Typography variant="h6" className="listingCardDesc">
-                            {this.pluralizeWord(this.props.itemName)}
+                            {this.props.itemName}
+                        </Typography>
+                        <Typography variant="body1" className="listingCardDesc">
+                            {this.props.farmName}
                         </Typography>
                         <Typography variant="h6" className="listingCardDesc">
                             ${this.props.price}
                         </Typography>
                     </CardContent>
-                    <LinearProgress className="ProgressBar" value={this.props.percentComplete} valueBuffer={this.props.percentAdditional + this.props.percentComplete} variant="buffer" />
-                    <CardContent>
-                        <Typography variant="h6" className="listingCardDesc">
-                            Time left: {this.props.timeLeft}
-                        </Typography>
-                    </CardContent>
+                    <LinearProgress className="ProgressBar" value={this.props.percentComplete} valueBuffer={this.props.percentAdditional + this.props.percentComplete} variant="determinate" />
+                    {TimeLeftComponent}
                 </CardActionArea>
                 <CardActions>
                     <form onSubmit={this.handleSubmit}>
@@ -113,7 +153,7 @@ class ListingCard extends React.Component {
                         <div className="inlineForm">
                         <TextField
                             id="standard-number"
-                            label="Quantity"
+                            label="qty"
                             value={this.state.qty}
                             onChange={this.handleChange('qty')}
                             type="number"

@@ -31,7 +31,8 @@ def create_food_bank(request, lat, long):
 def create_order(request):
   if request.method != "POST":
     raise exceptions.ViewDoesNotExist
-
+  for a in request.POST.lists():
+    print(a)
   farm_food_id = request.POST["farm_food_id"]
   food_bank_id = request.POST["food_bank_id"]
   user_id = request.POST["user_id"]
