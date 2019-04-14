@@ -139,7 +139,7 @@ def get_bank_food(request, food_bank_id, food_id=None):
       qty = 0
       orders_query = db.collection("orders").where("farm_food", "==", doc.reference).where("drop", "==", drop.reference)
       for orders_doc in orders_query.stream():
-        qty += orders_doc.get("qty")
+        qty += int(orders_doc.get("qty"))
       item["drop_qty"] = qty
       item["drop_quota"] = drop.get("quota")
       item["drop_deadline"] = drop.get("deadline")
