@@ -1,0 +1,23 @@
+.FoodItem {
+    display: inline-block;
+    padding: 5px;
+    background-color: #fff68e;
+    padding-top: 10px;
+    border: 0;
+}
+
+.FoodItemImg {
+    height: 20px;
+    width: 20px;
+    margin-right: 40px;
+}
+
+.FoodItemName {
+    position: absolute;
+}
+
+.FoodItemDesc {
+    position: absolute;
+    right: 0;
+    margin-right: 40px;
+}

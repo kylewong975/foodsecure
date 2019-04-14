@@ -6,6 +6,7 @@ import LinearProgress from '@material-ui/core/LinearProgress';
 import IconButton from '@material-ui/core/IconButton';
 import Typography from '@material-ui/core/Typography';
 import AddIcon from '@material-ui/icons/GroupAdd';
+import FoodItem from './FoodItem';
 import './UpcomingDelivery.css';
 
 export default class UpcomingDelivery extends React.Component {
@@ -26,10 +27,10 @@ export default class UpcomingDelivery extends React.Component {
                             </Typography>
                         </CardContent>
                     </Grid>
-                    <Grid item xs={6}>
-                        <p>A</p>
-                        <p>A</p>
-                        <p>A</p>
+                    <Grid item xs={6} className="FoodItemList">
+                        <FoodItem />
+                        <FoodItem />
+                        <FoodItem />
                     </Grid>
                 </Grid>
                 <div className="referralArea">

@@ -16,6 +16,18 @@
     border-right: 1px solid gray;
 }
 
+.FoodItemList {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    overflow-x: hidden;
+    overflow-y: auto;
+}
+
+.FoodItemList > :not(:last-child) {
+    border-bottom: 1px solid gray;
+}
+
 .deliveryCardInviteText {
     padding: 15px;
 }
