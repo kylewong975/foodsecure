@@ -171,17 +171,13 @@ class App extends Component {
               <Downshift
                 onInputValueChange={item => {
                   this.setState({ searchBarText: item })
-                  console.log("Downshift onInputValueChange: ", item, SEARCH_FOOD_API + "?search=" + this.state.searchBarText)
                   axios.get(SEARCH_FOOD_API + "?search=" + item)
                   .then(response => {
-                    console.log(`Server result retrieved: `)
-                    console.log(response.data)
                     this.setState({ searchResults: response.data })
                   })
                   .catch(message => console.warn(message))
                 }}
                 onChange={selectedItem => {
-                  console.log("Downshift onChange: ", selectedItem)
                   this.setState({ selectedFood: selectedItem.name })
                 }}
                 itemToString={item => item ? item.name : ""}
