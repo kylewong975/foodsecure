@@ -23,6 +23,12 @@ export default class UpcomingDelivery extends React.Component {
         })
     }
 
+    constructor(props) {
+        super(props);
+        this.FB = window.FB;
+
+    }
+
     render() {
         return (
             <Card className="deliveryCard">
