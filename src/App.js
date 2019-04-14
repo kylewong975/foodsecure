@@ -14,6 +14,9 @@ import Logo from '@material-ui/icons/Fastfood';
 import HelpIcon from '@material-ui/icons/HelpOutline';
 import NotificationsIcon from '@material-ui/icons/Notifications';
 import ProfileIcon from '@material-ui/icons/AccountCircle';
+import SearchBar from 'material-ui-search-bar';
+import Downshift from 'downshift';
+import axios from 'axios';
 import ListingCard from './Components/ListingCard';
 import UpcomingDelivery from './Components/UpcomingDelivery';
 
@@ -112,7 +115,26 @@ const styles = theme => ({
   },
 });
 
+const SEARCH_FOOD_API = "localhost:8080/search_foods"
+
+const SEARCH_RESULTS = [
+  { name: "Harry Potter" },
+  { name: "Net Moves" },
+  { name: "Half of a yellow sun" },
+  { name: "The Da Vinci Code" },
+  { name: "Born a crime" }
+];
+
+
 class App extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      searchBarText: "",
+      searchResults: []
+    }
+  }
+
   help = () => {
     let image = document.createElement("img");
     image.src = "/img/apple.png";
@@ -137,6 +159,60 @@ class App extends Component {
               <Typography variant="h5" color="default" noWrap>
                 FoodSecure
               </Typography>
+              {/* <SearchBar
+                className="searchBarMaterial"
+                value={this.state.searchBarText}
+                onChange={(value) => {
+                  this.setState({ searchBarText: value })
+                }}
+                onRequestSearch={() => { return }}
+              /> */}
+              <Downshift
+                onChange={selectedItem => alert(`You have selected ${selectedItem.name}`)}
+                itemToString={item => (SEARCH_RESULTS ? SEARCH_RESULTS.name : "")}
+              >
+                {({
+                  getInputProps,
+                  getItemProps,
+                  isOpen,
+                  inputValue,
+                  highlightedIndex,
+                  selectedItem,
+                  highlightedItem,
+                  getLabelProps
+                }) => (
+                    <div className="searchBar">
+                      <input {...getInputProps({ placeholder: "Search Foods" })} id="searchBarInput" />
+                      {isOpen ? (
+                        <div className="downshift-dropdown">
+                          {SEARCH_RESULTS
+                            .filter(
+                              item =>
+                                !inputValue ||
+                                item.name.toLowerCase().includes(inputValue.toLowerCase())
+                            )
+                            .map((item, index) => (
+                              <div
+                                className="dropdown-item"
+                                {...getItemProps({ key: item.name, index, item })}
+                                style={{
+                                  backgroundColor:
+                                    highlightedIndex === index ? "lightgray" : "white",
+                                  color: 'black',
+                                  fontWeight: selectedItem === item ? "bold" : "normal",
+                                  fontSize: "20px",
+                                  height: "30px",
+                                  padding: "7.5px"
+                                }}
+                              >
+                                {item.name}
+                              </div>
+                            ))}
+                        </div>
+                      ) : null}
+                    </div>
+                  )}
+              </Downshift>
               <div className="headerIcons">
                 <Tooltip title="Help">
                   <IconButton color="default" onClick={this.help}>

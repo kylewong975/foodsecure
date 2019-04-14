@@ -13,10 +13,37 @@
 
 .header {
   background-color: #00ff7f;
+
 }
 
 .logo {
   margin-right: 10px;
+}
+
+/*
+.searchBarMaterial {
+  margin-left: 100px;
+  width: 350px;
+}
+*/
+
+.searchBar {
+  margin-left: 100px;
+}
+
+#searchBarInput {
+  margin-top: 2px;
+  width: 20rem;
+  padding: 0.75rem 0.5rem;
+  font-size: 16px;
+}
+
+.downshift-dropdown {
+  position: fixed;
+  margin: 0 auto;
+  width: 21rem;
+  border: 1px solid whitesmoke;
+  border-bottom: none;
 }
 
 .headerIcons {
