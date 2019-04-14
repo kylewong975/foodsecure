@@ -19,7 +19,7 @@ const styles = theme => ({
     button: {
         margin: 5,
         flex: 1,
-        marginLeft: 75,
+        marginLeft: 85,
     },
     card: {
         width: 250,
